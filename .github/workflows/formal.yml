@@ -1,4 +1,4 @@
-name: Test Formalities
+name: Test Formalities1
 
 on:
   pull_request:
