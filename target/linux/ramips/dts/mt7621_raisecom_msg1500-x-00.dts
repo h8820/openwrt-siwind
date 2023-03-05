@@ -115,8 +115,16 @@
 	};
 };
 
-&ethernet {
-	pinctrl-0 = <&mdio_pins>, <&rgmii1_pins>;
+&gmac1 {
+	status = "okay";
+	label = "wan";
+	phy-handle = <&ethphy4>;
+};
+
+&mdio {
+	ethphy4: ethernet-phy@4 {
+		reg = <4>;
+	};
 };
 
 &switch0 {
@@ -140,17 +148,12 @@
 			status = "okay";
 			label = "lan1";
 		};
-
-		port@4 {
-			status = "okay";
-			label = "wan";
-		};
 	};
 };
 
 &state_default {
 	gpio {
-		groups = "i2c", "jtag", "rgmii2", "uart3", "wdt";
+		groups = "i2c", "jtag", "uart3", "wdt";
 		function = "gpio";
 	};
 };
@@ -162,5 +165,13 @@
 
 	macaddr_factory_4: macaddr@4 {
 		reg = <0x4 0x6>;
+	};
+
+	macaddr_factory_e000: macaddr@e000 {
+		reg = <0xe000 0x6>;
+	};
+
+	macaddr_factory_e006: macaddr@e006 {
+		reg = <0xe006 0x6>;
 	};
 };
