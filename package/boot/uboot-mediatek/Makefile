@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
-PKG_VERSION:=2023.01
-PKG_HASH:=69423bad380f89a0916636e89e6dcbd2e4512d584308d922d1039d1e4331950f
+PKG_VERSION:=2023.04
+PKG_HASH:=e31cac91545ff41b71cec5d8c22afd695645cd6e2a442ccdacacd60534069341
 PKG_BUILD_DEPENDS:=!(TARGET_ramips||TARGET_mediatek_mt7623):arm-trusted-firmware-tools/host
 
 include $(INCLUDE_DIR)/u-boot.mk
@@ -34,6 +34,7 @@ endif
 define U-Boot/Default
   BUILD_TARGET:=mediatek
   UBOOT_IMAGE:=u-boot-mtk.bin
+  HIDDEN:=1
 endef
 
 define U-Boot/mt7620_rfb
